@@ -4,6 +4,8 @@ declare global {
             DATABASE_URL: string;
             NODE_ENV: 'development' | 'production';
             NEXTAUTH_SECRET: string;
+            LIVEBLOCKS_PUBLIC_KEY: string;
+            LIVEBLOCKS_SECRET_KEY: string;
         }
     }
 }

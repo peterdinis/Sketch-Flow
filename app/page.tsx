@@ -4,9 +4,9 @@ import { CollaborativeApp } from "./_components/shared/CollaborativeApp";
 
 const Homepage: NextPage = () => {
   return (
-    <Room>
-      <CollaborativeApp />
-    </Room>
+    <>
+      <h1>Sketch Flow</h1>
+    </>
   )
 }
 

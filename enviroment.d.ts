@@ -10,11 +10,10 @@ declare global {
     }
 }
 
-declare module "*.module.css" {
+declare module '*.module.css' {
     const classes: { [key: string]: string };
     export default classes;
-  }
-  
+}
 
 // If this file has no import/export statements (i.e. is a script)
 // convert it into a module by adding an empty export statement.

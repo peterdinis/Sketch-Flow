@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { Archivo } from 'next/font/google';
 import './globals.css';
 import { Room } from './_components/shared/Room';
-import { ThemeProvider } from 'next-themes';
 import { Toaster } from '@/components/ui/toaster';
+import ThemeProvider from './_components/providers/ThemeProvider';
 
 const inter = Archivo({ subsets: ['latin'] });
 

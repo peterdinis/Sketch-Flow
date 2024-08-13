@@ -2,14 +2,15 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'liveblocks.io',
-                port: '',
-            },
-        ],
-    },
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "*",
+				port: "",
+				pathname: "/**",
+			},
+		],
+	},
     typescript: {
         ignoreBuildErrors: true,
     },

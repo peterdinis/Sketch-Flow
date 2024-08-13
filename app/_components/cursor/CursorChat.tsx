@@ -9,25 +9,28 @@ const CursorChat = ({
     updateMyPresence,
 }: CursorChatProps) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        updateMyPresence({ message: e.target.value });
-        setCursorState({
-            mode: CursorMode.Chat,
-            previousMessage: null,
-            message: e.target.value,
-        });
+        if (cursorState.mode === CursorMode.Chat) {
+            updateMyPresence({ message: e.target.value });
+            setCursorState({
+                ...cursorState,
+                message: e.target.value,
+            });
+        }
     };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            setCursorState({
-                mode: CursorMode.Chat,
-                previousMessage: cursorState.message,
-                message: '',
-            });
-        } else if (e.key === 'Escape') {
-            setCursorState({
-                mode: CursorMode.Hidden,
-            });
+        if (cursorState.mode === CursorMode.Chat) {
+            if (e.key === 'Enter') {
+                setCursorState({
+                    mode: CursorMode.Chat,
+                    previousMessage: cursorState.message,
+                    message: '',
+                });
+            } else if (e.key === 'Escape') {
+                setCursorState({
+                    mode: CursorMode.Hidden,
+                });
+            }
         }
     };
 
@@ -46,7 +49,7 @@ const CursorChat = ({
                         onKeyUp={(e) => e.stopPropagation()}
                     >
                         {cursorState.previousMessage && (
-                            <div>{cursorState.previousMessage} </div>
+                            <div>{cursorState.previousMessage}</div>
                         )}
                         <input
                             className='z-10 w-60 border-none bg-transparent text-white placeholder-blue-300 outline-none'
@@ -58,7 +61,7 @@ const CursorChat = ({
                                     ? ''
                                     : 'Say something...'
                             }
-                            value={cursorState.message}
+                            value={cursorState.message || ''}
                             maxLength={50}
                         />
                     </div>

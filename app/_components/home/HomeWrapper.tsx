@@ -7,13 +7,11 @@ import {
     handleCanvasObjectModified,
     handleCanvasObjectScaling,
     handleCanvasSelectionCreated,
-    handleCanvasMouseMove,
     handleResize,
     initializeFabric,
     renderCanvas,
 } from "@/lib/canvas";
 import { useMutation, useRedo, useStorage, useUndo } from "@/liveblocks.config";
-import { handleDelete, handleKeyDown } from "@/lib/key-events";
 import { handleImageUpload } from "@/lib/shapes";
 import { defaultNavElement } from "@/app/_constants";
 import { ActiveElement } from "@/app/_types/applicationTypes";
@@ -165,20 +163,24 @@ const HomeWrapper: FC = () => {
                 handleActiveElement={setActiveElement}
             />
             <div className="canvas-container">
-                <LeftSidebar />
+                <LeftSidebar allShapes={[]} />
                 <div className="canvas-wrapper">
                     <canvas id="canvas" ref={canvasRef} />
                 </div>
                 <RightSidebar
-                    elementAttributes={elementAttributes}
-                    setElementAttributes={setElementAttributes}
+                    elementAttributes={elementAttributes as any}
+                    setElementAttributes={setElementAttributes as any}
                     fabricRef={fabricRef}
                     activeObjectRef={activeObjectRef}
                     isEditingRef={isEditingRef}
                     syncShapeInStorage={syncShapeInStorage}
                 />
             </div>
-            <Live />
+            <Live canvasRef={undefined} undo={function (): void {
+                throw new Error("Function not implemented.");
+            } } redo={function (): void {
+                throw new Error("Function not implemented.");
+            } } />
         </div>
     );
 };

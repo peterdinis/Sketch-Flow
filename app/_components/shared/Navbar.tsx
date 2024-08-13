@@ -2,14 +2,12 @@
 
 import Image from 'next/image';
 import { memo } from 'react';
-
-import { navElements } from '@/constants';
-import { ActiveElement, NavbarProps } from '@/types/type';
-
-import { Button } from './ui/button';
 import ShapesMenu from './ShapesMenu';
-import ActiveUsers from './users/ActiveUsers';
-import { NewThread } from './comments/NewThread';
+import { ActiveElement, NavbarProps } from '@/app/_types/applicationTypes';
+import { navElements } from '@/app/_constants';
+import { NewThread } from '../comments/NewThread';
+import { Button } from '@/components/ui/button';
+import ActiveUsers from '../users/ActiveUsers';
 
 const Navbar = ({
     activeElement,

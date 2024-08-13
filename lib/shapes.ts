@@ -91,7 +91,7 @@ export const createSpecificShape = (
 };
 
 // TODO: Later
-/* export const handleImageUpload = ({
+export const handleImageUpload = ({
   file,
   canvas,
   shapeRef,
@@ -117,7 +117,7 @@ export const createSpecificShape = (
   };
 
   reader.readAsDataURL(file);
-}; */
+};
 
 export const createShape = (
     canvas: fabric.Canvas,

@@ -1,24 +1,23 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import LiveCursors from './cursor/LiveCursors';
 import {
     useBroadcastEvent,
     useEventListener,
     useMyPresence,
     useOthers,
 } from '@/liveblocks.config';
-import CursorChat from './cursor/CursorChat';
-import { CursorMode, CursorState, Reaction, ReactionEvent } from '@/types/type';
-import ReactionSelector from './reaction/ReactionButton';
-import FlyingReaction from './reaction/FlyingReaction';
-import useInterval from '@/hooks/useInterval';
 import {
     ContextMenu,
     ContextMenuContent,
     ContextMenuItem,
     ContextMenuTrigger,
 } from '@/components/ui/context-menu';
-import { Comments } from './comments/Comments';
-import { shortcuts } from '@/constants';
+import { shortcuts } from '@/app/_constants';
+import useInterval from '@/app/_hooks/useInterval';
+import { CursorState, CursorMode, Reaction, ReactionEvent } from '@/app/_types/applicationTypes';
+import CursorChat from '../cursor/CursorChat';
+import LiveCursors from '../cursor/LiveCursors';
+import FlyingReaction from '../reaction/FlyingReaction';
+import ReactionSelector from '../reaction/ReactionButton';
 
 type Props = {
     canvasRef: React.MutableRefObject<HTMLCanvasElement | null>;

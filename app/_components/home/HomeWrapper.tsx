@@ -56,8 +56,8 @@ const Home = () => {
    * operations on the canvas. It's a copy of the created canvas so we can use
    * it outside the canvas event listeners.
    */
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const fabricRef = useRef<fabric.Canvas | null>(null);
+  const canvasRef = useRef<any>();
+  const fabricRef = useRef<fabric.Canvas | any>(null);
 
   /**
    * isDrawing is a boolean that tells us if the user is drawing on the canvas.

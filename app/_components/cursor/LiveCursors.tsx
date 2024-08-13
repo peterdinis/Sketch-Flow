@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Cursor from './Cursor';
 import { LiveCursorProps } from '@/app/_types/applicationTypes';
 import { COLORS } from '@/app/_constants';
@@ -17,8 +17,8 @@ const LiveCursors = ({ others }: LiveCursorProps) => {
                 y={presence.cursor.y}
                 message={presence.message}
             />
-        )
-    })
-}
+        );
+    });
+};
 
-export default LiveCursors
+export default LiveCursors;

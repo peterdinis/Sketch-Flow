@@ -9,17 +9,20 @@ importers:
   .:
     dependencies:
       '@liveblocks/client':
-        specifier: ^2.4.0
-        version: 2.4.0
+        specifier: ^2.5.0
+        version: 2.5.0
       '@liveblocks/core':
         specifier: ^2.5.0
         version: 2.5.0
       '@liveblocks/react':
-        specifier: ^2.4.0
-        version: 2.4.0(react@18.3.1)
+        specifier: ^2.5.0
+        version: 2.5.0(react@18.3.1)
       '@liveblocks/react-comments':
         specifier: ^1.12.0
         version: 1.12.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@liveblocks/react-ui':
+        specifier: ^2.5.0
+        version: 2.5.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-context-menu':
         specifier: ^2.2.1
         version: 2.2.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -205,14 +208,11 @@ packages:
   '@liveblocks/client@1.12.0':
     resolution: {integrity: sha512-TL4sPbWBlrGF7UXLNx2RYuZi/Z51jXALMFAdaWkYE0Qz7mMwxTVSyjPVR7ZXVuqdSo0CTQ1rpPyZeqcoUDtEoQ==}
 
-  '@liveblocks/client@2.4.0':
-    resolution: {integrity: sha512-R1r22QrpxMYSgbUv8UWAQgHioMwXThkgUtk8MVsKfHFUB9lY57igVeNgmx7g4sz5D2lEspsK62fHPZrRy4wTnw==}
+  '@liveblocks/client@2.5.0':
+    resolution: {integrity: sha512-37+0Jyw/IVm8DGkVlDP+cvl3T68/Ut3Ho4Hp5XgPfJEh9yJHoBVBnTaPxpC8LklBnlwbtIm4qNCEJDZc3SVbdw==}
 
   '@liveblocks/core@1.12.0':
     resolution: {integrity: sha512-cPuVZwSh+EBnJL8DA999h4QDNSlOMFyxHPPHm9qVBf9Cl+NY7/Bg3cyKFiHOki6g7y8dQj8No2tpnAHWdqqalA==}
-
-  '@liveblocks/core@2.4.0':
-    resolution: {integrity: sha512-QECTaY9Bku3hQwZQwTbZEv+wrnuoemYYKy8fdgwJMNwLUn+MRsUHK/8vyE1ZqkBqbvo/eagRv8fiyZz2Qn3RRw==}
 
   '@liveblocks/core@2.5.0':
     resolution: {integrity: sha512-5niHdiiUmwSn7Joj8dbCkdUdTvC+qKzxIVYVqfIotDFkjvyc0VoTw66LDVXHLqms6oLOCv5m4t/JTirV195GEQ==}
@@ -223,13 +223,18 @@ packages:
     peerDependencies:
       react: ^16.14.0 || ^17 || ^18
 
+  '@liveblocks/react-ui@2.5.0':
+    resolution: {integrity: sha512-GY/cGL+K5I+M6w7TLCEVLNEEqxDS6T9kN6/PFCfxfryBO7wyB6dihloPeOFtFz7emHMafe3YExftT8jOOrH8fg==}
+    peerDependencies:
+      react: ^16.14.0 || ^17 || ^18
+
   '@liveblocks/react@1.12.0':
     resolution: {integrity: sha512-bxI420FRqUqEAHIyC6jTT40JiMDaum6+7Ag6osme2N0YsshOKZx4/z3uCD3LPdOQAzhaHiv9ZmVYwRFp3z9RfA==}
     peerDependencies:
       react: ^16.14.0 || ^17 || ^18
 
-  '@liveblocks/react@2.4.0':
-    resolution: {integrity: sha512-6FL+oSWZz5hcD8k1R0d9W/lVF2ZPm/fZOMMKV+sdZXtvhUjbdK1iBuPNxn9tyrhSZ9dO17D56nY/szo7Vsiw0Q==}
+  '@liveblocks/react@2.5.0':
+    resolution: {integrity: sha512-H/KkBuU8IQWNMyD7EHLL6OsM36PQKZuxzTcshbOLYCxwvP6CKhQ6Rs6bh+90Hw3u9/1LL74dw/IEmLDnaAvH/A==}
     peerDependencies:
       react: ^16.14.0 || ^17 || ^18
 
@@ -2233,8 +2238,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-virtuoso@4.9.0:
-    resolution: {integrity: sha512-MiiSGKqvYPfAK3FUe852n2L3M5IXMKP0pUgYQ/UTk90A/l2UNQOvaEUvAZp+0ytL0kOCNk8i8/J8FMKvIq7kqg==}
+  react-virtuoso@4.10.0:
+    resolution: {integrity: sha512-CyxU5TYMH4bw2cybH0bNqN/yIg2q2Vd0kbs92tQc5ResZALAIzIVJY4JL6BHgJFQjwrLhCYrFwKq0p+lvBgA0w==}
     engines: {node: '>=10'}
     peerDependencies:
       react: '>=16 || >=17 || >= 18'
@@ -2378,6 +2383,11 @@ packages:
 
   slate-history@0.100.0:
     resolution: {integrity: sha512-x5rUuWLNtH97hs9PrFovGgt3Qc5zkTm/5mcUB+0NR/TK923eLax4HsL6xACLHMs245nI6aJElyM1y6hN0y5W/Q==}
+    peerDependencies:
+      slate: '>=0.65.3'
+
+  slate-hyperscript@0.100.0:
+    resolution: {integrity: sha512-fb2KdAYg6RkrQGlqaIi4wdqz3oa0S4zKNBJlbnJbNOwa23+9FLD6oPVx9zUGqCSIpy+HIpOeqXrg0Kzwh/Ii4A==}
     peerDependencies:
       slate: '>=0.65.3'
 
@@ -2829,13 +2839,11 @@ snapshots:
     dependencies:
       '@liveblocks/core': 1.12.0
 
-  '@liveblocks/client@2.4.0':
+  '@liveblocks/client@2.5.0':
     dependencies:
-      '@liveblocks/core': 2.4.0
+      '@liveblocks/core': 2.5.0
 
   '@liveblocks/core@1.12.0': {}
-
-  '@liveblocks/core@2.4.0': {}
 
   '@liveblocks/core@2.5.0': {}
 
@@ -2851,9 +2859,32 @@ snapshots:
       '@radix-ui/react-toggle': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-tooltip': 1.1.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
-      react-virtuoso: 4.9.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-virtuoso: 4.10.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       slate: 0.102.0
       slate-history: 0.100.0(slate@0.102.0)
+      slate-react: 0.102.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(slate@0.102.0)
+      use-sync-external-store: 1.2.2(react@18.3.1)
+    transitivePeerDependencies:
+      - '@types/react'
+      - '@types/react-dom'
+      - react-dom
+
+  '@liveblocks/react-ui@2.5.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@floating-ui/react-dom': 2.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@liveblocks/client': 2.5.0
+      '@liveblocks/core': 2.5.0
+      '@liveblocks/react': 2.5.0(react@18.3.1)
+      '@radix-ui/react-dropdown-menu': 2.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-popover': 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-slot': 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-toggle': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-tooltip': 1.1.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
+      react-virtuoso: 4.10.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      slate: 0.102.0
+      slate-history: 0.100.0(slate@0.102.0)
+      slate-hyperscript: 0.100.0(slate@0.102.0)
       slate-react: 0.102.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(slate@0.102.0)
       use-sync-external-store: 1.2.2(react@18.3.1)
     transitivePeerDependencies:
@@ -2869,10 +2900,10 @@ snapshots:
       react: 18.3.1
       use-sync-external-store: 1.2.2(react@18.3.1)
 
-  '@liveblocks/react@2.4.0(react@18.3.1)':
+  '@liveblocks/react@2.5.0(react@18.3.1)':
     dependencies:
-      '@liveblocks/client': 2.4.0
-      '@liveblocks/core': 2.4.0
+      '@liveblocks/client': 2.5.0
+      '@liveblocks/core': 2.5.0
       react: 18.3.1
       use-sync-external-store: 1.2.2(react@18.3.1)
 
@@ -3960,7 +3991,7 @@ snapshots:
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.9.0(eslint@8.57.0)
       eslint-plugin-react: 7.35.0(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.57.0)
@@ -3984,7 +4015,7 @@ snapshots:
       enhanced-resolve: 5.17.1
       eslint: 8.57.0
       eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.6
       is-core-module: 2.15.0
@@ -4006,7 +4037,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0):
+  eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
     dependencies:
       array-includes: 3.1.8
       array.prototype.findlastindex: 1.2.5
@@ -5011,7 +5042,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.3
 
-  react-virtuoso@4.9.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-virtuoso@4.10.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -5175,6 +5206,11 @@ snapshots:
   slash@3.0.0: {}
 
   slate-history@0.100.0(slate@0.102.0):
+    dependencies:
+      is-plain-object: 5.0.0
+      slate: 0.102.0
+
+  slate-hyperscript@0.100.0(slate@0.102.0):
     dependencies:
       is-plain-object: 5.0.0
       slate: 0.102.0

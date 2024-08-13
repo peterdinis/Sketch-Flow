@@ -1,13 +1,8 @@
 import { NextPage } from 'next';
-import { Room } from './_components/shared/Room';
-import { CollaborativeApp } from './_components/shared/CollaborativeApp';
+import HomeWrapper from './_components/home/HomeWrapper';
 
 const Homepage: NextPage = () => {
-    return (
-        <>
-            <h1>Sketch Flow</h1>
-        </>
-    );
+    return <HomeWrapper />
 };
 
 export default Homepage;

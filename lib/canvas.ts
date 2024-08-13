@@ -11,6 +11,8 @@ import {
 import fabric from 'fabric';
 import { v4 as uuid4 } from 'uuid';
 import { createSpecificShape } from './shapes';
+import { defaultNavElement } from '@/app/_constants';
+import { Object, IEvent } from 'fabric/fabric-impl';
 
 // initialize fabric canvas
 export const initializeFabric = ({
@@ -237,10 +239,10 @@ export const handlePathCreated = ({
 export const handleCanvasObjectMoving = ({
     options,
 }: {
-    options: fabric.IEvent;
+    options: IEvent
 }) => {
     // get target object which is moving
-    const target = options.target as fabric.Object;
+    const target = options.target as unknown as fabric.Object;
 
     // target.canvas is the canvas on which the object is moving
     const canvas = target.canvas as fabric.Canvas;
@@ -286,7 +288,7 @@ export const handleCanvasSelectionCreated = ({
     if (!options?.selected) return;
 
     // get the selected element
-    const selectedElement = options?.selected[0] as fabric.Object;
+    const selectedElement = options?.selected[0] as unknown as fabric.Object;
 
     // if only one element is selected, set element attributes
     if (selectedElement && options.selected.length === 1) {
@@ -303,7 +305,7 @@ export const handleCanvasSelectionCreated = ({
             width: scaledWidth?.toFixed(0).toString() || '',
             height: scaledHeight?.toFixed(0).toString() || '',
             fill: selectedElement?.fill?.toString() || '',
-            stroke: selectedElement?.stroke || '',
+            stroke: selectedElement?.stroke as unknown as string || '',
             // @ts-ignore
             fontSize: selectedElement?.fontSize || '',
             // @ts-ignore
@@ -359,8 +361,8 @@ export const renderCanvas = ({
          */
         fabric.util.enlivenObjects(
             [objectData],
-            (enlivenedObjects: fabric.Object[]) => {
-                enlivenedObjects.forEach((enlivenedObj) => {
+            (enlivenedObjects: fabric.Object[] |any) => {
+                enlivenedObjects.forEach((enlivenedObj: Object) => {
                     // if element is active, keep it in active state so that it can be edited further
                     if (activeObjectRef.current?.objectId === objectId) {
                         fabricRef.current?.setActiveObject(enlivenedObj);
@@ -377,6 +379,7 @@ export const renderCanvas = ({
              *
              * Fabric Namespace: http://fabricjs.com/docs/fabric.html
              */
+            /* @ts-ignore */
             'fabric',
         );
     });
@@ -402,7 +405,7 @@ export const handleCanvasZoom = ({
     options,
     canvas,
 }: {
-    options: fabric.IEvent & { e: WheelEvent };
+    options: IEvent & { e: WheelEvent };
     canvas: fabric.Canvas;
 }) => {
     const delta = options.e?.deltaY;
@@ -418,7 +421,7 @@ export const handleCanvasZoom = ({
 
     // set zoom to canvas
     // zoomToPoint: http://fabricjs.com/docs/fabric.Canvas.html#zoomToPoint
-    canvas.zoomToPoint({ x: options.e.offsetX, y: options.e.offsetY }, zoom);
+    canvas.zoomToPoint({ x: options.e.offsetX, y: options.e.offsetY } as any, zoom)
 
     options.e.preventDefault();
     options.e.stopPropagation();

@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-
+import { FC, useEffect, useRef, useState } from "react";
 import { useMutation, useRedo, useStorage, useUndo } from "@/liveblocks.config";
 import {
   handleCanvaseMouseMove,
@@ -21,12 +20,12 @@ import { handleDelete, handleKeyDown } from "@/lib/key-events";
 import { handleImageUpload } from "@/lib/shapes";
 import { ActiveElement, Attributes } from "@/app/_types/applicationTypes";
 import { defaultNavElement } from "@/app/_constants";
-import { Canvas } from "fabric/fabric-impl";
 import Navbar from "../shared/Navbar";
 import LeftSidebar from "../shared/sidebar/LeftSidebar";
 import Live from "../shared/Live";
 import RightSidebar from "../shared/sidebar/RightSidebar";
-const Home = () => {
+
+const HomeWrapper: FC = () => {
   /**
    * useUndo and useRedo are hooks provided by Liveblocks that allow you to
    * undo and redo mutations.
@@ -527,4 +526,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeWrapper;

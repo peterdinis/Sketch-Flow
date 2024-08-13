@@ -19,6 +19,13 @@ import {
 } from "@/lib/canvas";
 import { handleDelete, handleKeyDown } from "@/lib/key-events";
 import { handleImageUpload } from "@/lib/shapes";
+import { ActiveElement, Attributes } from "@/app/_types/applicationTypes";
+import { defaultNavElement } from "@/app/_constants";
+import { Canvas } from "fabric/fabric-impl";
+import Navbar from "../shared/Navbar";
+import LeftSidebar from "../shared/sidebar/LeftSidebar";
+import Live from "../shared/Live";
+import RightSidebar from "../shared/sidebar/RightSidebar";
 const Home = () => {
   /**
    * useUndo and useRedo are hooks provided by Liveblocks that allow you to
@@ -166,7 +173,7 @@ const Home = () => {
    */
   const deleteAllShapes = useMutation(({ storage }) => {
     // get the canvasObjects store
-    const canvasObjects = storage.get("canvasObjects");
+    const canvasObjects = storage.get("canvasObjects") as any;
 
     // if the store doesn't exist or is empty, return
     if (!canvasObjects || canvasObjects.size === 0) return true;
@@ -279,7 +286,7 @@ const Home = () => {
      * Event inspector: http://fabricjs.com/events
      * Event list: http://fabricjs.com/docs/fabric.Canvas.html#fire
      */
-    canvas.on("mouse:down", (options) => {
+    canvas.on("mouse:down", (options: any) => {
       handleCanvasMouseDown({
         options,
         canvas,
@@ -296,7 +303,7 @@ const Home = () => {
      * Event inspector: http://fabricjs.com/events
      * Event list: http://fabricjs.com/docs/fabric.Canvas.html#fire
      */
-    canvas.on("mouse:move", (options) => {
+    canvas.on("mouse:move", (options: any) => {
       handleCanvaseMouseMove({
         options,
         canvas,
@@ -350,7 +357,7 @@ const Home = () => {
      * Event inspector: http://fabricjs.com/events
      * Event list: http://fabricjs.com/docs/fabric.Canvas.html#fire
      */
-    canvas.on("object:modified", (options) => {
+    canvas.on("object:modified", (options: any) => {
       handleCanvasObjectModified({
         options,
         syncShapeInStorage,
@@ -364,7 +371,7 @@ const Home = () => {
      * Event inspector: http://fabricjs.com/events
      * Event list: http://fabricjs.com/docs/fabric.Canvas.html#fire
      */
-    canvas?.on("object:moving", (options) => {
+    canvas?.on("object:moving", (options: any) => {
       handleCanvasObjectMoving({
         options,
       });
@@ -377,7 +384,7 @@ const Home = () => {
      * Event inspector: http://fabricjs.com/events
      * Event list: http://fabricjs.com/docs/fabric.Canvas.html#fire
      */
-    canvas.on("selection:created", (options) => {
+    canvas.on("selection:created", (options: any) => {
       handleCanvasSelectionCreated({
         options,
         isEditingRef,
@@ -392,7 +399,7 @@ const Home = () => {
      * Event inspector: http://fabricjs.com/events
      * Event list: http://fabricjs.com/docs/fabric.Canvas.html#fire
      */
-    canvas.on("object:scaling", (options) => {
+    canvas.on("object:scaling", (options: any) => {
       handleCanvasObjectScaling({
         options,
         setElementAttributes,
@@ -406,7 +413,7 @@ const Home = () => {
      * Event inspector: http://fabricjs.com/events
      * Event list: http://fabricjs.com/docs/fabric.Canvas.html#fire
      */
-    canvas.on("mouse:wheel", (options) => {
+    canvas.on("mouse:wheel", (options: any) => {
       handleCanvasZoom({
         options,
         canvas,
@@ -422,7 +429,7 @@ const Home = () => {
      */
     window.addEventListener("resize", () => {
       handleResize({
-        canvas: fabricRef.current,
+        canvas: fabricRef.current as any,
       });
     });
 

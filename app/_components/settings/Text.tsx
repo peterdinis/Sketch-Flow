@@ -95,7 +95,7 @@ const RenderSelect = ({
                   : fontWeight
         }
     >
-        <SelectTrigger className='no-ring border-primary-grey-200 w-full rounded-sm border'>
+        <SelectTrigger className='w-full rounded-md border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500'>
             <SelectValue
                 placeholder={
                     config.property === 'fontFamily'
@@ -106,12 +106,12 @@ const RenderSelect = ({
                 }
             />
         </SelectTrigger>
-        <SelectContent className='border-primary-grey-200 bg-primary-black text-primary-grey-300'>
+        <SelectContent className='rounded-lg border border-gray-700 bg-zinc-950 mt-2 shadow-lg'>
             {config.options.map((option) => (
                 <SelectItem
                     key={option.value}
                     value={option.value}
-                    className='hover:bg-primary-green hover:text-primary-black'
+                    className='px-2 py-1 hover:bg-gray-800'
                 >
                     {option.label}
                 </SelectItem>

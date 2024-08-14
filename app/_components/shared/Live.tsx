@@ -202,7 +202,7 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
                 onPointerLeave={handlePointerLeave}
                 onPointerDown={handlePointerDown}
                 onPointerUp={handlePointerUp}
-                className='relative flex h-full w-full flex-1 items-center justify-center'
+                className='bg-zinc-800 text-zinc-800 relative flex h-full w-full flex-1 items-center justify-center'
             >
                 <canvas ref={canvasRef} />
 
@@ -240,7 +240,7 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
                         onClick={() => handleContextMenuClick(item.name)}
                     >
                         <p>{item.name}</p>
-                        <p className='text-primary-grey-300 text-xs'>
+                        <p className='text-black text-xs'>
                             {item.shortcut}
                         </p>
                     </ContextMenuItem>

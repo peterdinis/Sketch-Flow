@@ -31,9 +31,9 @@ const RightSidebar = ({
         });
     };
     return (
-        <section className='broder-t border-primary-grey-200 bg-primary-black text-primary-grey-300 sticky right-0 flex h-full min-w-[227px] select-none flex-col max-sm:hidden'>
-            <h3 className='px-5 pt-4 text-xs uppercase'>Design</h3>
-            <span className='text-primary-grey-300 border-primary-grey-200 mt-3 border-b px-5 pb-4 text-xs'>
+        <section className='broder-t border-primary-gray-200 bg-zinc-900 text-white sticky right-0 flex h-full min-w-[227px] select-none flex-col max-sm:hidden'>
+            <h3 className='px-5 text-lg prose-h3: prose pt-4 text-white uppercase'>Design</h3>
+            <span className='text-sky-50 text-lg border-gray-200 mt-3 border-b px-5 pb-4'>
                 Make Changes to canvas as you like
             </span>
 

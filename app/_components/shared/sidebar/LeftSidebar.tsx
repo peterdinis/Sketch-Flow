@@ -1,11 +1,17 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import Image from 'next/image';
 
 import { getShapeInfo } from '@/lib/utils';
 
-const LeftSidebar = ({ allShapes }: { allShapes: Array<any> }) => {
+const LeftSidebar = ({ allShapes: initialShapes }: { allShapes: Array<any> }) => {
+    const [allShapes, setAllShapes] = useState(initialShapes);
+
+    const handleDeleteShape = (objectId: string) => {
+        setAllShapes(allShapes.filter((shape) => shape[1]?.objectId !== objectId));
+    };
+
     const memoizedShapes = useMemo(
         () => (
             <section className='bg-zinc-900 text-white sticky left-0 flex h-full min-w-[227px] select-none flex-col overflow-y-auto border-t pb-20 max-sm:hidden'>
@@ -19,7 +25,7 @@ const LeftSidebar = ({ allShapes }: { allShapes: Array<any> }) => {
                         return (
                             <div
                                 key={shape[1]?.objectId}
-                                className='hover:bg-zinc-800 hover:text-primary-black group my-1 flex items-center gap-2 px-5 py-2.5 hover:cursor-pointer'
+                                className='hover:bg-zinc-800 hover:text-primary-black group my-1 flex items-center gap-2 px-5 py-2.5 hover:cursor-pointer relative'
                             >
                                 <Image
                                     src={info?.icon}
@@ -31,13 +37,19 @@ const LeftSidebar = ({ allShapes }: { allShapes: Array<any> }) => {
                                 <h3 className='text-lg prose prose-h3: text-white font-semibold capitalize'>
                                     {info.name}
                                 </h3>
+                                <button
+                                    onClick={() => handleDeleteShape(shape[1]?.objectId)}
+                                    className='absolute right-5 text-red-500 hover:text-red-700'
+                                >
+                                    &#x2715;
+                                </button>
                             </div>
                         );
                     })}
                 </div>
             </section>
         ),
-        [allShapes?.length],
+        [allShapes],
     );
 
     return memoizedShapes;

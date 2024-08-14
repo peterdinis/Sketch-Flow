@@ -2,7 +2,7 @@ import { LiveMap, createClient } from '@liveblocks/client';
 import { createRoomContext, createLiveblocksContext } from '@liveblocks/react';
 
 const client = createClient({
-    publicApiKey: "pk_dev_kfHM0Q0qUxonknbze2Z5LRiTeqPWCjkAtxX4zgiqmHRVj7bHYoy5MUa9ApXZTxSj",
+    publicApiKey: process.env.LIVEBLOCKS_PUBLIC_KEY,
 
     async resolveUsers({ userIds }) {
         // Used only for Comments and Notifications. Return a list of user information

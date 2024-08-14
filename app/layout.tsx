@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang='en'>
-            <body className={`${workSans.className} bg-gray-800`}>
+            <body className={`${workSans.className} bg-background`}>
                 <ThemeProvider attribute='class'>
                     <Room>{children}</Room>
                     <Toaster />

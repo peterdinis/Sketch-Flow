@@ -170,6 +170,10 @@ const HomeWrapper: FC = () => {
    *
    * We're using this mutation to delete all the shapes from the key-value store when the user clicks on the reset button.
    */
+  const handleDeleteShape = (shapeId: string) => {
+    handleDelete(fabricRef.current, deleteShapeFromStorage);
+  };
+  
   const deleteAllShapes = useMutation(({ storage }) => {
     // get the canvasObjects store
     const canvasObjects = storage.get("canvasObjects") as any;
@@ -509,7 +513,7 @@ const HomeWrapper: FC = () => {
       />
 
       <section className='flex h-full flex-row'>
-        <LeftSidebar allShapes={Array.from(canvasObjects)} />
+        <LeftSidebar allShapes={Array.from(canvasObjects)} onDeleteShape={handleDeleteShape} />
 
         <Live canvasRef={canvasRef} undo={undo} redo={redo} />
 

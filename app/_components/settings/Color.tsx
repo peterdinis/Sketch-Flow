@@ -30,7 +30,7 @@ const Color = ({
                 }
             />
             <Label className='flex-1'>{attribute}</Label>
-            <Label className='bg-primary-grey-100 flex h-6 w-8 items-center justify-center text-[10px] leading-3'>
+            <Label className='flex h-6 w-8 items-center justify-center text-[10px] leading-3'>
                 90%
             </Label>
         </div>

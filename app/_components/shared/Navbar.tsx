@@ -21,14 +21,8 @@ const Navbar = ({
             value.some((val) => val?.value === activeElement?.value));
 
     return (
-        <nav className='bg-primary-black flex select-none items-center justify-between gap-4 px-5 text-white'>
-            <Image
-                src='/assets/logo.svg'
-                alt='FigPro Logo'
-                width={58}
-                height={20}
-            />
-
+        <nav className='bg-zinc-900 flex select-none items-center justify-between gap-4 px-5 text-white'>
+            <h2 className='prose prose-h2: font-bold text-xl text-white'>Sketch Flow</h2>
             <ul className='flex flex-row'>
                 {navElements.map((item: ActiveElement | any) => (
                     <li

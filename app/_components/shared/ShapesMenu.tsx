@@ -39,7 +39,7 @@ const ShapesMenu = ({
                     </Button>
                 </DropdownMenuTrigger>
 
-                <DropdownMenuContent className='bg-primary-black mt-5 flex flex-col gap-y-1 border-none py-4 text-white'>
+                <DropdownMenuContent className='bg-zinc-800 mt-5 flex flex-col gap-y-1 border-none py-4 text-white'>
                     {item.value.map((elem) => (
                         <Button
                             key={elem?.name}

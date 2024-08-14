@@ -1,212 +1,180 @@
-import * as fabric from 'fabric';
-import { IText, Line, Rect, Triangle, Circle, Image as FabricImage, Object as FabricObject, Canvas } from 'fabric/fabric-impl';
-import { v4 as uuidv4 } from 'uuid';
+import { CustomFabricObject, ImageUpload, ModifyShape, ElementDirection } from "@/app/_types/applicationTypes";
+import { fabric } from "fabric";
+import { v4 as uuidv4 } from "uuid";
 
-// Extend the types to include the `objectId` property
-interface CustomFabricObject extends FabricObject {
-    objectId?: string;
-}
+export const createRectangle = (pointer: PointerEvent) => {
+  const rect = new fabric.Rect({
+    left: pointer.x,
+    top: pointer.y,
+    width: 100,
+    height: 100,
+    fill: "#aabbcc",
+    objectId: uuidv4(),
+  } as CustomFabricObject<fabric.Rect>);
 
-interface CustomRect extends Rect, CustomFabricObject {}
-interface CustomTriangle extends Triangle, CustomFabricObject {}
-interface CustomCircle extends Circle, CustomFabricObject {}
-interface CustomLine extends Line, CustomFabricObject {}
-interface CustomIText extends IText, CustomFabricObject {}
-interface CustomImage extends FabricImage, CustomFabricObject {}
-
-export interface ImageUpload {
-    file: File;
-    canvas: React.MutableRefObject<Canvas | null>;
-    shapeRef: React.MutableRefObject<CustomFabricObject | null>;
-    syncShapeInStorage: (shape: CustomFabricObject) => void;
-}
-
-export interface ModifyShape {
-    canvas: Canvas;
-    property: 'fill' | 'stroke' | 'strokeWidth' | 'width' | 'height' | string;
-    value: string | number;
-    activeObjectRef: React.MutableRefObject<CustomFabricObject | null>;
-    syncShapeInStorage: (shape: CustomFabricObject) => void;
-}
-
-export interface ElementDirection {
-    canvas: Canvas;
-    direction: 'front' | 'back';
-    syncShapeInStorage: (shape: CustomFabricObject) => void;
-}
-
-export const createRectangle = (pointer: PointerEvent): CustomRect => {
-    return new fabric.Rect({
-        left: pointer.x,
-        top: pointer.y,
-        width: 100,
-        height: 100,
-        fill: '#aabbcc',
-    }) as unknown as CustomRect;
+  return rect;
 };
 
-export const createTriangle = (pointer: PointerEvent): CustomTriangle => {
-    return new fabric.Triangle({
-        left: pointer.x,
-        top: pointer.y,
-        width: 100,
-        height: 100,
-        fill: '#aabbcc',
-    }) as unknown as CustomTriangle;
+export const createTriangle = (pointer: PointerEvent) => {
+  return new fabric.Triangle({
+    left: pointer.x,
+    top: pointer.y,
+    width: 100,
+    height: 100,
+    fill: "#aabbcc",
+    objectId: uuidv4(),
+  } as CustomFabricObject<fabric.Triangle>);
 };
 
-export const createCircle = (pointer: PointerEvent): CustomCircle => {
-    return new fabric.Circle({
-        left: pointer.x,
-        top: pointer.y,
-        radius: 50,
-        fill: '#aabbcc',
-    }) as unknown as CustomCircle;
+export const createCircle = (pointer: PointerEvent) => {
+  return new fabric.Circle({
+    left: pointer.x,
+    top: pointer.y,
+    radius: 100,
+    fill: "#aabbcc",
+    objectId: uuidv4(),
+  } as any);
 };
 
-export const createLine = (pointer: PointerEvent): CustomLine => {
-    return new fabric.Line(
-        [pointer.x, pointer.y, pointer.x + 100, pointer.y + 100],
-        {
-            stroke: '#aabbcc',
-            strokeWidth: 2,
-        },
-    ) as unknown as CustomLine;
+export const createLine = (pointer: PointerEvent) => {
+  return new fabric.Line(
+    [pointer.x, pointer.y, pointer.x + 100, pointer.y + 100],
+    {
+      stroke: "#aabbcc",
+      strokeWidth: 2,
+      objectId: uuidv4(),
+    } as CustomFabricObject<fabric.Line>
+  );
 };
 
-export const createText = (pointer: PointerEvent, text: string): CustomIText => {
-    return new fabric.IText(text, {
-        left: pointer.x,
-        top: pointer.y,
-        fill: '#aabbcc',
-        fontFamily: 'Helvetica',
-        fontSize: 36,
-        fontWeight: '400',
-    }) as unknown as CustomIText;
+export const createText = (pointer: PointerEvent, text: string) => {
+  return new fabric.IText(text, {
+    left: pointer.x,
+    top: pointer.y,
+    fill: "#aabbcc",
+    fontFamily: "Helvetica",
+    fontSize: 36,
+    fontWeight: "400",
+    objectId: uuidv4()
+  } as fabric.ITextOptions);
 };
 
 export const createSpecificShape = (
-    shapeType: string,
-    pointer: PointerEvent,
-): CustomFabricObject | null => {
-    let shape: CustomFabricObject | null = null;
+  shapeType: string,
+  pointer: PointerEvent
+) => {
+  switch (shapeType) {
+    case "rectangle":
+      return createRectangle(pointer);
 
-    switch (shapeType) {
-        case 'rectangle':
-            shape = createRectangle(pointer);
-            break;
-        case 'triangle':
-            shape = createTriangle(pointer);
-            break;
-        case 'circle':
-            shape = createCircle(pointer);
-            break;
-        case 'line':
-            shape = createLine(pointer);
-            break;
-        case 'text':
-            shape = createText(pointer, 'Tap to Type');
-            break;
-        default:
-            return null;
-    }
+    case "triangle":
+      return createTriangle(pointer);
 
-    shape.objectId = uuidv4(); // Assign objectId to the shape
-    return shape;
+    case "circle":
+      return createCircle(pointer);
+
+    case "line":
+      return createLine(pointer);
+
+    case "text":
+      return createText(pointer, "Tap to Type");
+
+    default:
+      return null;
+  }
 };
 
 export const handleImageUpload = ({
-    file,
-    canvas,
-    shapeRef,
-    syncShapeInStorage,
-}: ImageUpload): void => {
-    const reader = new FileReader();
+  file,
+  canvas,
+  shapeRef,
+  syncShapeInStorage,
+}: ImageUpload) => {
+  const reader = new FileReader();
 
-    reader.onload = () => {
-        const imageURL = reader.result as string;
+  reader.onload = () => {
+    fabric.Image.fromURL(reader.result as string, (img) => {
+      img.scaleToWidth(200);
+      img.scaleToHeight(200);
 
-        // Typing the callback correctly
-        /* @ts-ignore */ // TODO: Maybe this will be working
-        fabric.Image.fromURL(imageURL, (img: fabric.Image) => {
-            if (img) {
-                img.scaleToWidth(200);
-                img.scaleToHeight(200);
+      canvas.current.add(img);
 
-                const customImage = img as unknown as CustomImage;
-                customImage.objectId = uuidv4(); // Assign objectId to the image
+      // @ts-ignore
+      img.objectId = uuidv4();
 
-                canvas.current?.add(customImage);
+      shapeRef.current = img;
 
-                shapeRef.current = customImage;
+      syncShapeInStorage(img);
+      canvas.current.requestRenderAll();
+    });
+  };
 
-                syncShapeInStorage(customImage);
-                canvas.current?.requestRenderAll();
-            }
-        });
-    };
-
-    reader.readAsDataURL(file);
+  reader.readAsDataURL(file);
 };
 
 export const createShape = (
-    canvas: Canvas,
-    pointer: PointerEvent,
-    shapeType: string,
-): CustomFabricObject | null => {
-    if (shapeType === 'freeform') {
-        canvas.isDrawingMode = true;
-        return null;
-    }
+  canvas: fabric.Canvas,
+  pointer: PointerEvent,
+  shapeType: string
+) => {
+  if (shapeType === "freeform") {
+    canvas.isDrawingMode = true;
+    return null;
+  }
 
-    const shape = createSpecificShape(shapeType, pointer);
-    if (shape) {
-        canvas.add(shape);
-    }
-    return shape;
+  return createSpecificShape(shapeType, pointer);
 };
 
 export const modifyShape = ({
-    canvas,
-    property,
-    value,
-    activeObjectRef,
-    syncShapeInStorage,
-}: ModifyShape): void => {
-    const selectedElement = canvas.getActiveObject() as CustomFabricObject;
+  canvas,
+  property,
+  value,
+  activeObjectRef,
+  syncShapeInStorage,
+}: ModifyShape) => {
+  const selectedElement = canvas.getActiveObject();
 
-    if (!selectedElement || selectedElement?.type === 'activeSelection') return;
+  if (!selectedElement || selectedElement?.type === "activeSelection") return;
 
-    if (property === 'width') {
-        selectedElement.set('scaleX', 1);
-        selectedElement.set('width', value as number);
-    } else if (property === 'height') {
-        selectedElement.set('scaleY', 1);
-        selectedElement.set('height', value as number);
-    } else {
-        if (selectedElement[property as keyof CustomFabricObject] === value) return;
-        selectedElement.set(property as keyof CustomFabricObject, value);
-    }
+  // if  property is width or height, set the scale of the selected element
+  if (property === "width") {
+    selectedElement.set("scaleX", 1);
+    selectedElement.set("width", value);  
+  } else if (property === "height") {
+    selectedElement.set("scaleY", 1);
+    selectedElement.set("height", value);
+  } else {
+    if (selectedElement[property as keyof object] === value) return;
+    selectedElement.set(property as keyof object, value);
+  }
 
-    activeObjectRef.current = selectedElement;
+  // set selectedElement to activeObjectRef
+  activeObjectRef.current = selectedElement;
 
-    syncShapeInStorage(selectedElement);
+  syncShapeInStorage(selectedElement);
 };
 
 export const bringElement = ({
-    canvas,
-    direction,
-    syncShapeInStorage,
-}: ElementDirection): void => {
-    const selectedElement = canvas.getActiveObject() as CustomFabricObject;
+  canvas,
+  direction,
+  syncShapeInStorage,
+}: ElementDirection) => {
+  if (!canvas) return;
 
-    if (!selectedElement || selectedElement?.type === 'activeSelection') return;
+  // get the selected element. If there is no selected element or there are more than one selected element, return
+  const selectedElement = canvas.getActiveObject();
 
-    if (direction === 'front') {
-        canvas.bringToFront(selectedElement);
-    } else if (direction === 'back') {
-        canvas.sendToBack(selectedElement);
-    }
+  if (!selectedElement || selectedElement?.type === "activeSelection") return;
 
-    syncShapeInStorage(selectedElement);
+  // bring the selected element to the front
+  if (direction === "front") {
+    canvas.bringToFront(selectedElement);
+  } else if (direction === "back") {
+    canvas.sendToBack(selectedElement);
+  }
+
+  // canvas.renderAll();
+  syncShapeInStorage(selectedElement);
+
+  // re-render all objects on the canvas
 };

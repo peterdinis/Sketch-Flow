@@ -317,7 +317,7 @@ export const handleCanvasObjectScaling = ({
     ? selectedElement?.height! * selectedElement?.scaleY
     : selectedElement?.height;
 
-  setElementAttributes((prev) => ({
+  setElementAttributes((prev: any) => ({
     ...prev,
     width: scaledWidth?.toFixed(0).toString() || "",
     height: scaledHeight?.toFixed(0).toString() || "",

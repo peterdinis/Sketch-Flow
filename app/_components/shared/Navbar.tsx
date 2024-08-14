@@ -31,7 +31,7 @@ const Navbar = ({
                             if (Array.isArray(item.value)) return;
                             handleActiveElement(item);
                         }}
-                        className={`group flex items-center justify-center px-2.5 py-5 ${isActive(item.value) ? 'bg-primary-green' : 'hover:bg-primary-grey-200'} `}
+                        className={`group flex items-center justify-center px-2.5 py-5 ${isActive(item.value) ? 'bg-zinc-800' : 'hover:bg-zinc-900'} `}
                     >
                         {/* If value is an array means it's a nav element with sub options i.e., dropdown */}
                         {Array.isArray(item.value) ? (

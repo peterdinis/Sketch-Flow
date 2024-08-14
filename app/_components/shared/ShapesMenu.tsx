@@ -8,6 +8,7 @@ import {
     DropdownMenuTrigger,
     DropdownMenuContent,
 } from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
 
 const ShapesMenu = ({
     item,
@@ -23,7 +24,7 @@ const ShapesMenu = ({
     return (
         <>
             <DropdownMenu>
-                <DropdownMenuTrigger asChild className='no-ring'>
+                <DropdownMenuTrigger asChild>
                     <Button
                         className='relative h-5 w-5 object-contain'
                         onClick={() => handleActiveElement(item)}
@@ -67,7 +68,7 @@ const ShapesMenu = ({
                                 <p
                                     className={`text-sm ${
                                         activeElement.value === elem?.value
-                                            ? 'text-primary-black'
+                                            ? 'text-zinc-900'
                                             : 'text-white'
                                     }`}
                                 >
@@ -79,7 +80,7 @@ const ShapesMenu = ({
                 </DropdownMenuContent>
             </DropdownMenu>
 
-            <input
+            <Input
                 type='file'
                 className='hidden'
                 ref={imageInputRef}

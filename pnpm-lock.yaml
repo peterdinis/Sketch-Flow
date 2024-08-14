@@ -85,8 +85,8 @@ importers:
         specifier: ^0.5.14
         version: 0.5.14(tailwindcss@3.4.9)
       '@types/fabric':
-        specifier: ^5.3.8
-        version: 5.3.8
+        specifier: ^5.3.6
+        version: 5.3.6
       '@types/node':
         specifier: ^20
         version: 20.14.14
@@ -689,8 +689,8 @@ packages:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
 
-  '@types/fabric@5.3.8':
-    resolution: {integrity: sha512-NorXLdAVb1y9Ph2PhDyd5sknmwIm2gqegQRMeGEY29wVPqWgNqlAC8P89V6LZVESWFjAvHcZpFjKMhM7W4Ii0Q==}
+  '@types/fabric@5.3.6':
+    resolution: {integrity: sha512-nTP5I68SsGnanIHxCoBX83ghscw9M9DI27iSDcd0Z+cpiQ5cZByH0nzkm4itDR/LgAy253q7B93xHgyOh2+hFQ==}
 
   '@types/is-hotkey@0.1.10':
     resolution: {integrity: sha512-RvC8KMw5BCac1NvRRyaHgMMEtBaZ6wh0pyPTBu7izn4Sj/AX9Y4aXU5c7rX8PnM/knsuUpC1IeoBkANtxBypsQ==}
@@ -3322,7 +3322,7 @@ snapshots:
   '@tootallnate/once@2.0.0':
     optional: true
 
-  '@types/fabric@5.3.8': {}
+  '@types/fabric@5.3.6': {}
 
   '@types/is-hotkey@0.1.10': {}
 

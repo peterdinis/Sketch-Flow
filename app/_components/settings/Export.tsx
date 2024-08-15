@@ -1,8 +1,12 @@
+"use client"
+
 import { Button } from '@/components/ui/button';
 import { exportToPdf } from '@/lib/utils';
+import { FC } from 'react';
 
-const Export = () => (
-    <div className='flex flex-col gap-3 px-5 py-3'>
+const Export: FC = () => {
+    return (
+        <div className='flex flex-col gap-3 px-5 py-3'>
         <h3 className='text-[10px] uppercase'>Export</h3>
         <Button
             variant={"default"}
@@ -12,6 +16,7 @@ const Export = () => (
             Export to PDF
         </Button>
     </div>
-);
+    )
+}
 
 export default Export;
